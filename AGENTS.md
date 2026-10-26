@@ -21,6 +21,6 @@ uv run python scripts/run_pipeline.py -i data.csv -o output/
 ## Structure
 - `src/multi_time/` — 9 subpackages (config, data, validate, stats, transform, modeling, evaluate, visualization, pipeline)
 - `tests/` — pytest suite mirroring src/ subpackages
-- `scripts/` — 4 thin CLI orchestrators
+- `scripts/` — 9 thin CLI orchestrators
 - `docs/` — architecture, API reference, configuration, guides, module docs
 - `output/` — default output directory (gitignored)

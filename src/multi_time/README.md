@@ -107,8 +107,8 @@ ens = create_ensemble(["naive", "theta", "exp_smoothing"])
 ```python
 from multi_time import evaluate_forecast, METRIC_REGISTRY
 
-metrics = evaluate_forecast(y_test, preds, metrics_list=["mae", "rmse", "mape"])
-# {'mae': 1.23, 'rmse': 1.56, 'mape': 0.034}
+metrics = evaluate_forecast(y_test, preds, metrics_list=["mae", "mse", "mape"])
+# {'mae': 1.23, 'mse': 1.56, 'mape': 0.034}
 ```
 
 ### Pipeline

@@ -1,7 +1,7 @@
 # Guide: CLI# 🎯 Scripts Reference
 
 > [!NOTE]
-> Reference for the 8 thin CLI orchestrator scripts within `multi-time`. For underlying terminology, refer strictly to [Notation and Glossary](../technical/notation.md).
+> Reference for the 9 thin CLI orchestrator scripts (8 task-specific + `run_all.py`) within `multi-time`. For underlying terminology, refer strictly to [Notation and Glossary](../technical/notation.md).
 
 ## Master Script
 
@@ -71,6 +71,13 @@ uv run python scripts/run_validation.py -i data.csv --column temperature
 ```bash
 uv run python scripts/run_descriptive.py -i data.csv -o stats.json
 uv run python scripts/run_descriptive.py -i data.csv --nlags 30 --rolling-window 12
+```
+
+### `run_analysis.py`
+
+```bash
+uv run python scripts/run_analysis.py -i data.csv --seasonal-period 12 -o output/analysis
+uv run python scripts/run_analysis.py -i data.csv --nlags 30 --rolling-window 12 --no-plots
 ```
 
 ---

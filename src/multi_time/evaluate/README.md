@@ -28,9 +28,9 @@ METRIC_REGISTRY = {
 ## Output Schema
 
 ```python
-evaluate_forecast(y_true, y_pred, metrics_list=["mae", "rmse", "mape"]) → {
+evaluate_forecast(y_true, y_pred, metrics_list=["mae", "mse", "mape"]) → {
     "mae": 1.234,
-    "rmse": 1.567,
+    "mse": 1.567,
     "mape": 0.034,
 }
 ```
@@ -41,8 +41,8 @@ evaluate_forecast(y_true, y_pred, metrics_list=["mae", "rmse", "mape"]) → {
 from multi_time.evaluate import evaluate_forecast, compute_metric
 
 # Multi-metric
-metrics = evaluate_forecast(y_test, predictions, metrics_list=["mae", "rmse", "mape"])
-print(f"MAE: {metrics['mae']:.4f}, RMSE: {metrics['rmse']:.4f}")
+metrics = evaluate_forecast(y_test, predictions, metrics_list=["mae", "mse", "mape"])
+print(f"MAE: {metrics['mae']:.4f}, MSE: {metrics['mse']:.4f}")
 
 # Single metric
 mae = compute_metric(y_test, predictions, "mae")
