@@ -2,19 +2,19 @@
 
 ## Overview
 
-Time series visualization subpackage with **17 plot functions** across 5 sub-modules + 1 facade.
+Time series visualization subpackage with **19 plot functions** across 6 sub-modules + 1 facade.
 
 ## Files
 
 | File | Functions | Purpose |
 | --- | --- | --- |
 | `core.py` | `check_matplotlib()`, `save_or_show()` | Agg backend + shared utilities |
-| `series.py` | `plot_series()` | Multi-series overlay |
+| `series.py` | `plot_series()`, `plot_multi_series_panel()`, `plot_series_correlation()` | Multi-series overlay, panels, correlation |
 | `forecast.py` | `plot_forecast()`, `plot_residuals()` | Forecast + residual analysis |
 | `diagnostics.py` | 3 functions | ACF/PACF, decomposition, diagnostics |
 | `statistics.py` | 8 functions | Rolling, distribution, lag, boxplot, heatmap, stationarity, validation, missing |
 | `comparison.py` | 3 functions | Model comparison, error distribution, cumulative error |
-| `plots.py` | — | Facade re-exporting all 17 functions |
+| `plots.py` | — | Facade re-exporting all 19 functions |
 
 ## Conventions
 

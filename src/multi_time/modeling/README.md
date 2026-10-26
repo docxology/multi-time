@@ -7,12 +7,12 @@
 | Symbol | Type | Description |
 | --- | --- | --- |
 | `create_forecaster` | `(name: str) → BaseForecaster` | Factory from registry |
-| `create_ensemble` | `(names: list[str]) → EnsembleForecaster` | Multi-model ensemble |
+| `create_ensemble` | `(specs: list[str | tuple]) → EnsembleForecaster` | Multi-model ensemble |
 | `run_forecast` | `(forecaster, y_train, fh) → pd.Series` | Fit + predict |
-| `evaluate_forecaster` | `(forecaster, data, test_size, metrics) → dict` | Eval with train/test split |
-| `tune_forecaster` | `(forecaster, data, param_grid) → BaseForecaster` | Grid search tuning |
+| `evaluate_forecaster` | `(forecaster, y, cv_strategy, fh) → pd.DataFrame` | Rolling-origin cross-validation |
+| `tune_forecaster` | `(forecaster, param_grid, y) → BaseForecaster` | Grid search tuning |
 | `predict_intervals` | `(forecaster, y_train, fh, coverage) → pd.DataFrame` | Prediction intervals |
-| `predict_quantiles` | `(forecaster, y_train, fh, quantiles) → pd.DataFrame` | Quantile predictions |
+| `predict_quantiles` | `(forecaster, y_train, fh, alpha) → pd.DataFrame` | Quantile predictions |
 | `predict_variance` | `(forecaster, y_train, fh) → pd.Series` | Prediction variance |
 | `create_probabilistic_forecaster` | `(name: str) → BaseForecaster` | Probabilistic variant |
 | `fit_distribution` | `(residuals) → dict` | Fit residual distributions |
@@ -22,18 +22,12 @@
 
 ```python
 FORECASTER_REGISTRY = {
-    "naive":             lambda: NaiveForecaster(strategy="last"),
-    "seasonal_naive":    lambda: NaiveForecaster(strategy="seasonal_last", sp=12),
-    "theta":             lambda: ThetaForecaster(),
-    "exp_smoothing":     lambda: ExponentialSmoothing(),
-    "ses":               lambda: ExponentialSmoothing(trend=None, seasonal=None),
-    "auto_ets":          lambda: AutoETS(),
-    "croston":           lambda: Croston(),
-    "polynomial_trend":  lambda: PolynomialTrendForecaster(degree=1),
-    "arima":             lambda: ARIMA(order=(1, 1, 0)),
-    "auto_arima":        lambda: AutoARIMA(suppress_warnings=True),
-    "bats":              lambda: BATS(use_trend=True),
-    "tbats":             lambda: TBATS(use_trend=True),
+    "naive":         _create_naive,          # NaiveForecaster(strategy="last")
+    "exp_smoothing": _create_exp_smoothing,  # ExponentialSmoothing(trend="add", seasonal="add")
+    "theta":         _create_theta,          # ThetaForecaster()
+    "poly_trend":    _create_poly_trend,     # PolynomialTrendForecaster(degree=1)
+    "auto_arima":    _create_auto_arima,     # AutoARIMA (needs pmdarima)
+    "sarimax":       _create_sarimax,        # SARIMAX
 }
 ```
 
@@ -58,5 +52,5 @@ ens_preds = run_forecast(ens, y_train, fh=30)
 
 # Tuning
 from multi_time.modeling import tune_forecaster
-best = tune_forecaster(f, y_train, param_grid={"sp": [7, 12, 30]})
+best = tune_forecaster(f, {"sp": [7, 12, 30]}, y_train)
 ```

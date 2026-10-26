@@ -47,4 +47,4 @@ errors = config.validate()  # Returns [] if valid
 
 ## Related Tests
 
-- `tests/config/test_config.py` — 11 tests covering defaults, validation, YAML loading, error cases
+- `tests/config/test_config.py` — 18 tests covering defaults, validation, YAML loading, error cases

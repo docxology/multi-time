@@ -3,7 +3,7 @@
 
 Demonstrates the full multi-time toolkit in a single command: generates synthetic
 data, runs validation + all statistical tests, trains multiple models with ensemble,
-produces prediction intervals, temporal CV, and generates all 17 visualization types.
+produces prediction intervals, temporal CV, and generates 17 of the 19 visualization types.
 
 Usage:
     python scripts/run_end_to_end.py --type daily --n 365 --models naive theta -o output/
@@ -72,7 +72,7 @@ except ImportError:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="End-to-end: generate → validate → stats → train → visualize (all 17 plots)",
+        description="End-to-end: generate → validate → stats → train → visualize (17 plots)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     # Data generation
@@ -294,7 +294,7 @@ def main() -> int:
         except Exception as e:
             logger.warning("[CV] Temporal cross-validation skipped: %s", e)
 
-    # ── 9. VISUALIZE (all 17 functions) ─────────────────────────────────────────
+    # ── 9. VISUALIZE (17 of the 19 functions) ────────────────────────────────────
     n_plots = 0
     if HAS_VIZ and not args.no_plots:
         logger.info("[VISUALIZE] Generating all plots...")

@@ -74,7 +74,7 @@ multi-time/
 │   └── pipeline/        # End-to-end orchestrator
 │       └── __init__.py
 ├── scripts/             # Thin CLI orchestrators
-├── tests/               # pytest suite (134 tests)
+├── tests/               # pytest suite (180 tests)
 ├── docs/                # Documentation
 └── pyproject.toml
 ```

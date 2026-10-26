@@ -1,8 +1,8 @@
 # multi_time
 
-Root Python package for multi-frequency time series analysis. v0.3.0.
+Root Python package for multi-frequency time series analysis. v0.2.0.
 
-## Public API — 55+ Exported Symbols
+## Public API — 63 Exported Symbols
 
 ### Configuration
 
@@ -99,8 +99,7 @@ preds = run_forecast(f, y_train, fh=30)      # pd.Series
 intervals = predict_intervals(f, y_train, fh=30, coverage=0.95)  # pd.DataFrame
 
 ens = create_ensemble(["naive", "theta", "exp_smoothing"])
-# Available: naive, theta, exp_smoothing, ses, auto_ets, croston,
-#            polynomial_trend, arima, auto_arima, bats, tbats
+# Available: naive, exp_smoothing, theta, poly_trend, auto_arima, sarimax
 ```
 
 ### Evaluation
@@ -133,5 +132,5 @@ result: PipelineResult = pipeline.run(y_train, y_test)
 | `transform/` | 1 | 9 | 6 transformer factories + pipeline builder |
 | `modeling/` | 5 | 11 | Forecasting + probabilistic + tuning |
 | `evaluate/` | 1 | 5 | Metric registry + evaluation |
-| `visualization/` | 7 | 17 | 17 plot functions in 5 sub-modules |
+| `visualization/` | 7 | 19 | 19 plot functions in 6 sub-modules |
 | `pipeline/` | 1 | 2 | End-to-end orchestrator |

@@ -22,7 +22,7 @@ work is delegated to the `multi_time` library subpackages.
 - `run_analysis.py` — Full analysis (6 stat tests + up to 14 viz plots)
 - `run_forecast.py` — Multi-model forecasting (ensemble, temporal CV, 7 viz)
 - `run_pipeline.py` — Full MultiTimePipeline (6-stage) + 4 viz + JSON output
-- `run_end_to_end.py` — Complete demo (generate → all 17 viz, temporal CV)
+- `run_end_to_end.py` — Complete demo (generate → 17 viz, temporal CV)
 - `run_multi_series.py` — Multi-series coordination (generation, harmonization, cross-correlation, individual forecasting, 24 viz plots)
 
 ## Key Patterns

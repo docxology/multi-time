@@ -16,13 +16,13 @@
 
 ```python
 METRIC_REGISTRY = {
-    "mae":   MeanAbsoluteError(),              # Mean Absolute Error
-    "rmse":  MeanSquaredError(square_root=True), # Root Mean Squared Error
-    "mse":   MeanSquaredError(),                # Mean Squared Error
-    "mape":  MeanAbsolutePercentageError(),     # Mean Absolute Percentage Error
-    "smape": MeanAbsolutePercentageError(symmetric=True),  # Symmetric MAPE
-    "mase":  MeanAbsoluteScaledError(),         # Mean Absolute Scaled Error
+    "mae":   MeanAbsoluteError,                 # Mean Absolute Error
+    "mse":   MeanSquaredError,                  # Mean Squared Error
+    "mape":  MeanAbsolutePercentageError,       # Mean Absolute Percentage Error
+    "mdape": MedianAbsolutePercentageError,     # Median Absolute Percentage Error
 }
+# Added when sktime exposes them: "mase" (MeanAbsoluteScaledError),
+# "rmsse" (MeanSquaredScaledError)
 ```
 
 ## Output Schema

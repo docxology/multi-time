@@ -1,13 +1,13 @@
 # src/
 
-Source root for the `multi-time` package (v0.3.0). Contains the `multi_time` Python package. This package is built explicitly as a robust wrapper around the `sktime` ecosystem, incorporating state-of-the-art implementations (e.g., `AutoARIMA`, `EnsembleForecaster`, ML Reductions via `make_reduction`, and exhaustive metric registries).
+Source root for the `multi-time` package (v0.2.0). Contains the `multi_time` Python package. This package is built explicitly as a robust wrapper around the `sktime` ecosystem, incorporating state-of-the-art implementations (e.g., `AutoARIMA`, `EnsembleForecaster`, ML Reductions via `make_reduction`, and exhaustive metric registries).
 
 ## Structure
 
 ```
 src/
 └── multi_time/              # Main package (9 subpackages, 40+ Python files)
-    ├── __init__.py          # Root re-exports: 50+ public symbols
+    ├── __init__.py          # Root re-exports: 63 public symbols
     ├── config/              # MultiTimeConfig + structured logging
     │   ├── settings.py      # Dataclass config + YAML loader
     │   └── logging.py       # get_logger(), setup_logging()
@@ -38,9 +38,9 @@ src/
     │   ├── evaluation.py    # evaluate_forecaster() + tune_forecaster()
     │   ├── probabilistic.py # predict_intervals/quantiles/variance + fit_distribution
     │   └── forecasters.py   # Facade + run_forecast()
-    ├── evaluate/            # sktime.performance_metrics (MAE, MAPE, sMAPE, RMSE)
+    ├── evaluate/            # sktime.performance_metrics (MAE, MSE, MAPE, MdAPE)
     │   └── metrics.py       # METRIC_REGISTRY + evaluate_forecast()
-    ├── visualization/       # 19 plot functions in 5 sub-modules
+    ├── visualization/       # 19 plot functions in 6 sub-modules
     │   ├── core.py          # Agg backend, COLORS, save_or_show()
     │   ├── series.py        # plot_series()
     │   ├── forecast.py      # plot_forecast(), plot_residuals()
@@ -49,7 +49,7 @@ src/
     │   ├── comparison.py    # 3 functions: model_comparison, error_distribution, cumulative_error
     │   └── plots.py         # Facade
     └── pipeline/            # End-to-end
-        └── pipeline.py      # MultiTimePipeline + PipelineResult
+        └── __init__.py      # MultiTimePipeline + PipelineResult
 ```
 
 ## Design Patterns

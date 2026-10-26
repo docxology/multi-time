@@ -38,7 +38,7 @@ uv run python scripts/run_synthetic.py --type configurable --n 500 \
     --noise-std 2.0 --gap-fraction 0.05 --outlier-fraction 0.02
 
 # Random walk
-uv run python scripts/run_synthetic.py --type random_walk --n 200 --drift 0.5
+uv run python scripts/run_synthetic.py --type random_walk --n 200
 ```
 
 | Flag | Default | Description |
@@ -70,7 +70,7 @@ uv run python scripts/run_validation.py -i data.csv --column temperature
 
 ```bash
 uv run python scripts/run_descriptive.py -i data.csv -o stats.json
-uv run python scripts/run_descriptive.py -i data.csv --nlags 30 --window 12
+uv run python scripts/run_descriptive.py -i data.csv --nlags 30 --rolling-window 12
 ```
 
 ---

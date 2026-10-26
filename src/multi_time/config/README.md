@@ -40,7 +40,7 @@ class MultiTimeConfig:
 models: [naive, theta, exp_smoothing]
 forecast_horizon: 30
 test_fraction: 0.15
-metrics: [mae, rmse, mape, smape]
+metrics: [mae, mse, mape]
 transformations: [impute, detrend]
 output_dir: output/analysis
 alpha: 0.05

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Root package for the multi-time toolkit. 9 subpackages, 40+ Python files, 55+ public symbols.
+Root package for the multi-time toolkit. 9 subpackages, 40+ Python files, 63 public symbols.
 
 ## Conventions
 
@@ -16,15 +16,15 @@ Root package for the multi-time toolkit. 9 subpackages, 40+ Python files, 55+ pu
 ## Architecture
 
 ```
-__init__.py          50+ re-exports from all 9 subpackages
+__init__.py          63 re-exports from all 9 subpackages
 config/              MultiTimeConfig + YAML loader + logging
 data/                GENERATOR_REGISTRY (10 entries) + CSV I/O
 validate/            ValidationResult + PatchinessResult dataclasses
 stats/               StatTestResult dataclass + 5 test categories
 transform/           TRANSFORMER_REGISTRY (6 entries) + pipeline builder
-modeling/            FORECASTER_REGISTRY (11+ entries) + probabilistic
-evaluate/            METRIC_REGISTRY (6+ entries) + evaluate_forecast
-visualization/       17 plot functions + Agg backend + COLORS palette
+modeling/            FORECASTER_REGISTRY (6 entries) + probabilistic
+evaluate/            METRIC_REGISTRY (4 entries + 2 optional) + evaluate_forecast
+visualization/       19 plot functions + Agg backend + COLORS palette
 pipeline/            MultiTimePipeline + PipelineResult
 ```
 

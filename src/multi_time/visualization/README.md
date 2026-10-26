@@ -1,24 +1,26 @@
 # multi_time.visualization
 
-**17 matplotlib-based plot functions across 5 sub-modules**
+**19 matplotlib-based plot functions across 6 sub-modules**
 
 ## Sub-modules
 
 | Module | Functions | Description |
 | --- | --- | --- |
 | `core.py` | 2 | Agg backend, `COLORS` palette, `save_or_show()` |
-| `series.py` | 1 | `plot_series()` — multi-series overlay |
+| `series.py` | 3 | `plot_series()`, `plot_multi_series_panel()`, `plot_series_correlation()` |
 | `forecast.py` | 2 | `plot_forecast()`, `plot_residuals()` |
 | `diagnostics.py` | 3 | `plot_acf_pacf()`, `plot_decomposition()`, `plot_diagnostics()` |
 | `statistics.py` | 8 | Rolling stats, distribution, lag scatter, boxplot, heatmap, stationarity, validation summary, missing data |
 | `comparison.py` | 3 | `plot_model_comparison()`, `plot_error_distribution()`, `plot_cumulative_error()` |
-| `plots.py` | — | Facade re-exporting all 17 functions |
+| `plots.py` | — | Facade re-exporting all 19 functions |
 
-## All 17 Plot Functions
+## All 19 Plot Functions
 
 | Function | Signature (key args) | Description |
 | --- | --- | --- |
 | `plot_series` | `(*series, title, labels, save_path)` | Multi-series overlay |
+| `plot_multi_series_panel` | `(series_dict, title, show_overlap, save_path)` | Stacked panels, shared x-axis |
+| `plot_series_correlation` | `(series_dict, method, save_path)` | Cross-correlation matrix |
 | `plot_forecast` | `(y_train, y_pred, y_test?, intervals?, save_path)` | Forecast vs actuals |
 | `plot_residuals` | `(residuals, save_path)` | Residual time + histogram |
 | `plot_acf_pacf` | `(acf_values, pacf_values, nlags, save_path)` | ACF + PACF bars |

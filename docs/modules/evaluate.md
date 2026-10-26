@@ -45,4 +45,4 @@ print(list_available_metrics())
 
 ## Related Tests
 
-- `tests/evaluate/test_metrics.py` — 10 tests
+- `tests/evaluate/test_metrics.py` — 9 tests

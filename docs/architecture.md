@@ -33,7 +33,7 @@ graph TD
 | `stats/` | `tests.py` (facade), `descriptive.py`, `result.py`, `stationarity.py`, `normality.py`, `seasonality.py`, `causality.py` | Descriptive stats + 5 statistical tests (ADF, KPSS, Shapiro, ARCH, Granger) | `statsmodels`, `scipy` |
 | `transform/` | `transformers.py` | 6 sktime transformer wrappers + pipeline builder | `sktime.transformations` |
 | `modeling/` | `forecasters.py` (facade), `registry.py`, `ensemble.py`, `evaluation.py`, `probabilistic.py` | 6 forecaster factories, ensemble, tuning, probabilistic | `sktime.forecasting`, `scipy` |
-| `evaluate/` | `metrics.py` | 6 forecast evaluation metrics registry | `sktime.performance_metrics` |
+| `evaluate/` | `metrics.py` | 4 forecast evaluation metrics + 2 optional | `sktime.performance_metrics` |
 | `visualization/` | `plots.py` (facade), `core.py`, `series.py`, `forecast.py`, `diagnostics.py`, `statistics.py`, `comparison.py` | 19 plot functions across 6 categories | `matplotlib`, `scipy` |
 | `pipeline/` | `__init__.py` | End-to-end configurable pipeline (6 stages) | all above |
 
@@ -43,7 +43,7 @@ graph TD
 | --- | --- |
 | Python source files | 42 |
 | Test files | 180 tests across 9 test modules |
-| CLI scripts | 8 (7 task-specific + 1 master `run_all.py`) |
+| CLI scripts | 9 (8 task-specific + 1 master `run_all.py`) |
 
 ## Data Flow
 

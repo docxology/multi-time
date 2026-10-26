@@ -61,4 +61,4 @@ result.save("output/pipeline_results.json")
 
 ## Related Tests
 
-- `tests/pipeline/test_pipeline.py` — 10 tests
+- `tests/pipeline/test_pipeline.py` — 11 tests

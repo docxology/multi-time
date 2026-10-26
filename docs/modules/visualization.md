@@ -1,7 +1,7 @@
 # 🎯 Module: visualization
 
 > [!NOTE]
-> 19 `matplotlib`-based plot functions across 5 sub-modules. See [Notation and Glossary](../technical/notation.md) for plotting variable meanings (e.g. `lags`, `alpha`).
+> 19 `matplotlib`-based plot functions across 6 sub-modules. See [Notation and Glossary](../technical/notation.md) for plotting variable meanings (e.g. `lags`, `alpha`).
 
 ## Files
 
@@ -53,4 +53,4 @@
 
 ## Tests
 
-`tests/visualization/test_visualization.py` — 27 tests covering all 19 plot functions.
+`tests/visualization/test_visualization.py` — 30 tests covering all 19 plot functions.

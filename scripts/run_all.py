@@ -131,7 +131,7 @@ SCRIPTS = {
             "--ensemble",
             "--horizon", "30",
         ],
-        "description": "End-to-end: generate → validate → 6 tests → train → all 17 viz plots",
+        "description": "End-to-end: generate → validate → 6 tests → train → 17 viz plots",
     },
     "multi_series": {
         "script": "scripts/run_multi_series.py",

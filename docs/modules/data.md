@@ -29,4 +29,4 @@
 
 ## Tests
 
-`tests/data/test_data.py` — 30 tests covering all generators, registry, and loaders.
+`tests/data/test_data.py` — 29 tests covering all generators, registry, and loaders.

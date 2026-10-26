@@ -2,7 +2,7 @@
 """Thin orchestrator for comprehensive time series analysis and visualization.
 
 Demonstrates the full multi_time analysis toolkit: validation, descriptive
-statistics, 6 statistical tests, transformation, and all 17 visualization
+statistics, 6 statistical tests, transformation, and 17 of the 19 visualization
 functions. Produces a complete JSON report and numbered PNG plots.
 
 Usage:
@@ -35,7 +35,7 @@ from multi_time.transform import build_transform_pipeline, apply_transform
 
 logger = get_logger(__name__)
 
-# Visualization imports (optional — all 17 functions)
+# Visualization imports (optional — 17 of the 19 functions)
 try:
     from multi_time.visualization import (
         plot_series,
@@ -63,7 +63,7 @@ except ImportError:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Comprehensive time series analysis — all stats + all 17 visualizations",
+        description="Comprehensive time series analysis — all stats + 17 visualizations",
         formatter_class=argparse.RawDescriptionHelpFormatter,
     )
     parser.add_argument("--input", "-i", required=True, help="Path to CSV file")
@@ -136,7 +136,7 @@ def main() -> int:
     logger.info("[TEST] Seasonality: %s", seasonal.interpretation)
     logger.info("[TEST] ARCH: %s (p=%.4f)", hetero.interpretation, hetero.p_value)
 
-    # ── 6. VISUALIZE (all 17 functions) ──────────────────────────────────────────
+    # ── 6. VISUALIZE (17 of the 19 functions) ────────────────────────────────────
     n_plots = 0
     if HAS_VIZ and not args.no_plots:
         logger.info("[VISUALIZE] Generating all analysis plots...")
