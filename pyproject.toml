@@ -7,7 +7,7 @@ name = "multi-time"
 version = "0.2.0"
 description = "Comprehensive multi-frequency time series analysis toolkit built on the sktime ecosystem"
 readme = "README.md"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 license = {text = "MIT"}
 classifiers = [
     "Programming Language :: Python :: 3",
