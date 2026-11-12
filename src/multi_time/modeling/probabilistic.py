@@ -222,7 +222,9 @@ def fit_distribution(
             params = dist.fit(clean)
 
             # Kolmogorov-Smirnov test
-            ks_stat, ks_p = scipy_stats.kstest(clean, dist_name, args=params)
+            # Pass the distribution's own cdf: SciPy 1.18 resolves a name like
+            # "norm" to a ufunc that rejects loc/scale as positional args.
+            ks_stat, ks_p = scipy_stats.kstest(clean, dist.cdf, args=params)
 
             # Log-likelihood for AIC/BIC
             log_lik = np.sum(dist.logpdf(clean, *params))
