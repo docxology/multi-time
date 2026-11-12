@@ -1,5 +1,11 @@
 # multi-time
 
+<p align="center">
+  <a href="https://github.com/docxology/multi-time/actions/workflows/ci.yml"><img alt="ci.yml workflow status on main" src="https://github.com/docxology/multi-time/actions/workflows/ci.yml/badge.svg?branch=main"></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-blue"></a>
+  <img alt="Requires Python 3.11 or newer" src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white">
+</p>
+
 **Comprehensive multi-frequency time series analysis toolkit** built on the [sktime](https://github.com/sktime/sktime) ecosystem.
 
 Handles multi-frequency data, patchy/irregular series, descriptive statistics, statistical testing, and state-of-the-art forecasting — all configurable, modular, and fully tested.
@@ -77,6 +83,29 @@ multi-time/
 ├── tests/               # pytest suite (180 tests)
 ├── docs/                # Documentation
 └── pyproject.toml
+```
+
+### Package map
+
+Generated on 2026-11-12 from the `import` statements under `src/multi_time/`. An arrow from A to B means code in A imports B; arrows already implied by a longer path are left out, so the picture shows layering rather than every edge. It shows 7 of the package's 9 top-level parts: the largest ones that import or are imported by others.
+
+```mermaid
+flowchart LR
+    accTitle: Internal dependency map of the multi_time package
+    accDescr: Generated from import statements in src/multi_time. Each box is a subpackage of the package; an arrow from A to B means code in A imports B; arrows already implied by a longer path are omitted. Most-imported: config, validate, transform.
+    n_stats["stats/"]
+    n_modeling["modeling/"]
+    n_validate["validate/"]
+    n_pipeline["pipeline/"]
+    n_transform["transform/"]
+    n_config["config/"]
+    n_evaluate["evaluate/"]
+    n_pipeline --> n_stats
+    n_pipeline --> n_config
+    n_pipeline --> n_validate
+    n_pipeline --> n_transform
+    n_pipeline --> n_modeling
+    n_pipeline --> n_evaluate
 ```
 
 ## Subpackage Imports
