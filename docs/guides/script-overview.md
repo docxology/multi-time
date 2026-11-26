@@ -6,7 +6,7 @@ Each script contains **zero business logic** — all work is delegated to the `m
 ## Quick Start
 
 ```bash
-# Run everything (generates ~103 output files)
+# Run the suite of examples
 uv run python scripts/run_all.py
 
 # Run individual scripts
@@ -44,12 +44,8 @@ All output goes to `output/<script_name>/` with JSON reports and numbered PNG pl
 
 ## Key CLI Patterns
 
-All scripts support:
-
-- `--output-dir` / `-o` — Output directory
-- `--log-level` — DEBUG / INFO / WARNING
-- `--no-plots` — Skip visualization (faster execution)
-- `--config` / `-c` — YAML configuration file
+Flags and output paths vary by script. Use `--help` or the
+[script reference](scripts_reference.md) for the selected command.
 
 ## Visualization Coverage
 

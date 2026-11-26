@@ -1,0 +1,26 @@
+paper:
+  title: "Multi-Time: A Python Toolkit for Time Series Analysis"
+  subtitle: "A reproducible synthetic forecasting example"
+  version: "0.2.0"
+
+authors:
+  - name: "Daniel Ari Friedman"
+    orcid: "0000-0001-6232-9096"
+
+metadata:
+  language: "en"
+  license: "MIT"
+
+keywords:
+  - time series
+  - forecasting
+  - validation
+  - sktime
+
+render:
+  formats:
+    pdf: true
+    html: true
+    slides: false
+    docx: false
+    epub: false

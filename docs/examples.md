@@ -237,5 +237,5 @@ uv run python scripts/run_pipeline.py -i data.csv -o output/
 uv run python scripts/run_end_to_end.py --type daily --n 365 --models naive theta --ensemble
 
 # Run ALL scripts at once
-uv run python scripts/run_all.py --output-dir output
+uv run python scripts/run_all.py -o output
 ```

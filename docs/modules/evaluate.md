@@ -18,7 +18,7 @@
 | `mape` | `MeanAbsolutePercentageError` | Σ\|y - ŷ\|/\|y\| / n | No |
 | `mdape` | `MedianAbsolutePercentageError` | median(\|y - ŷ\|/\|y\|) | No |
 | `mase` | `MeanAbsoluteScaledError` | MAE / in-sample MAE | Yes |
-| `rmsse` | `MeanSquaredScaledError` | √(MSE / in-sample MSE) | Yes |
+| `rmsse` | `MeanSquaredScaledError` | MSE relative to a training-series baseline (default estimator setting) | Yes |
 
 *All classes are imported from `sktime.performance_metrics.forecasting`.*
 

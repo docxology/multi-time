@@ -22,39 +22,28 @@ validate → describe → test → transform → forecast → evaluate
 5. **Forecast** — `run_forecast()` for each model in `config.models`
 6. **Evaluate** — `evaluate_forecast()` against test set
 
-## Schema: PipelineResult
-
-```python
-@dataclass
-class PipelineResult:
-    validation: dict                         # validate_series().to_dict()
-    descriptive_stats: dict                  # summarize_series() output
-    statistical_tests: dict                  # {test_name: StatTestResult.to_dict()}
-    predictions: dict[str, pd.Series]        # {model_name: predicted_series}
-    evaluation_results: dict[str, dict]      # {model_name: {metric: value}}
-    pipeline_log: list[str]                  # Stage completion messages
-
-    def to_dict(self) -> dict[str, Any]: ...
-```
+The in-memory result includes `forecast_results` as a mapping from model
+name to indexed predictions represented by dictionaries. See the
+[serialized result schema](../technical/schema_and_api.md#pipelineresult).
 
 ## Usage
 
 ```python
-from multi_time.pipeline import MultiTimePipeline
+from multi_time.pipeline import MultiTimePipeline, PipelineResult
 from multi_time.config import MultiTimeConfig
 
 config = MultiTimeConfig(
     models=["naive", "theta", "exp_smoothing"],
     forecast_horizon=30,
-    metrics=["mae", "rmse", "mape"],
-    transformations=["impute"],
+    metrics=["mae", "mse", "mape"],
+    transform_steps=["impute"],
 )
 
 pipeline = MultiTimePipeline(config=config)
 result: PipelineResult = pipeline.run(y_train, y_test)
 
-print(result.pipeline_log)           # ['validate: OK', 'describe: OK', ...]
-print(result.evaluation_results)     # {'theta': {'mae': 1.2, ...}}
+print(result.pipeline_log)
+print(result.evaluation_results)
 ```
 
 ## Configuration Driven
@@ -65,6 +54,6 @@ All pipeline behavior is controlled by `MultiTimeConfig`:
 config.models              # Which forecasters to run
 config.forecast_horizon    # How far ahead to predict
 config.metrics             # Which evaluation metrics
-config.transformations     # Which pre-processing steps
-config.alpha               # Statistical test significance level
+config.transform_steps     # Which pre-processing steps
+config.significance_level  # Statistical test significance level
 ```

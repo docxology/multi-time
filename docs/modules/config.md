@@ -38,7 +38,7 @@ from multi_time.config import MultiTimeConfig, load_config
 config = load_config("config.yaml")
 
 # From dict
-config = load_config({"forecast_horizon": 24, "models": ["theta"]})
+config = load_config({"forecast_horizon": 24})
 
 # Defaults
 config = MultiTimeConfig()
@@ -48,3 +48,5 @@ errors = config.validate()  # Returns [] if valid
 ## Related Tests
 
 - `tests/config/test_config.py` — 18 tests covering defaults, validation, YAML loading, error cases
+
+See the [configuration guide](../configuration.md) for loader behavior and list-valued settings.

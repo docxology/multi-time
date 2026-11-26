@@ -3,70 +3,37 @@
 > [!NOTE]
 > Detailed schema for `MultiTimeConfig` and available estimator mappings. For standard terminology, refer to [Notation and Glossary](technical/notation.md).
 
+Use the Python constructor to configure a forecast pipeline.
+
 ```python
-from multi_time.config import MultiTimeConfig, load_config
+from multi_time.config import MultiTimeConfig
 
-# From a YAML file
-config = load_config("config.yaml")
-
-# From a dict
-config = load_config({
-    "forecast_horizon": 24,
-    "models": ["naive", "auto_arima"],
-    "frequency": "D",
-})
-
-# Defaults
-config = MultiTimeConfig()
+config = MultiTimeConfig(
+    forecast_horizon=24,
+    models=["naive", "theta"],
+    metrics=["mae", "mse", "mape"],
+    transform_steps=["impute"],
+)
 ```
 
-## Full Config Schema
+`load_config` accepts a YAML path or dictionary and validates scalar settings.
+The current loader skips `models`, `metrics`, and `transform_steps` because
+they use dataclass default factories. Set those fields through the Python
+constructor. Pass estimator-specific parameters to `create_forecaster()`.
 
 ```yaml
-# config.yaml
-frequency: "auto"              # auto, D, H, M, W, Q, Y
-imputation_strategy: "drift"   # drift, mean, median, ffill, bfill, nearest
-forecast_horizon: 12           # Steps ahead (≥1)
-confidence_level: 0.95         # Interval coverage (0–1)
-significance_level: 0.05       # Statistical test alpha
-
-# Models to run
-models:
-  - naive
-  - exp_smoothing
-  - auto_arima
-
-# Model-specific keyword arguments (scikit-learn parameters)
-model_kwargs:
-  exp_smoothing:
-    trend: add
-    seasonal: add
-    sp: 12
-  auto_arima:
-    sp: 12
-    suppress_warnings: true
-
-# Evaluation metrics
-metrics:
-  - mae
-  - mse
-  - mape
-
-# Descriptive settings
-nlags_acf: 40
+# Example scalar settings for load_config("config.yaml")
+forecast_horizon: 24
+imputation_strategy: "drift"
+nlags_acf: 24
 rolling_window: 12
-seasonal_period: 12            # null for auto-detect
-
-# Transform pipeline (applied in order)
-transform_steps:
-  - impute
-  - detrend
-
-# Output
-output_dir: "output"
-log_level: "INFO"
-log_file: "pipeline.log"
+significance_level: 0.05
+seasonal_period: 12
 ```
+
+Individual scripts choose which settings to consume. Check the
+[script's flags](guides/scripts_reference.md) before combining CLI and YAML
+settings.
 
 ## Available Forecasters
 
@@ -101,24 +68,16 @@ log_file: "pipeline.log"
 | `mase` | `sktime.performance_metrics.forecasting.MeanAbsoluteScaledError` | Yes |
 | `rmsse` | `sktime.performance_metrics.forecasting.MeanSquaredScaledError` | Yes |
 
-## Dependency Groups
+## Optional dependencies
 
 ```bash
-# Core (sktime, statsmodels, scipy, pandas, numpy, pyyaml)
-uv pip install -e .
-
-# Forecasting extras (pmdarima, tbats)
-uv pip install -e ".[forecasting]"
-
-# Visualization (matplotlib)
-uv pip install -e ".[visualization]"
-
-# Probabilistic (skpro)
-uv pip install -e ".[probabilistic]"
-
-# Deep learning (pytorch-forecasting, torch, lightning)
-uv pip install -e ".[deep-learning]"
-
-# Everything
-uv pip install -e ".[all,dev]"
+uv sync --locked
+uv sync --locked --extra forecasting
+uv sync --locked --extra visualization
+uv sync --locked --extra probabilistic
+uv sync --locked --extra all --extra dev
 ```
+
+The `deep-learning` extra installs additional dependencies. The current
+forecaster registry has no deep learning entry, and `all` does not include
+that extra. The plotting extra enables matplotlib-based visualization.

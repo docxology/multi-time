@@ -89,7 +89,6 @@ Required: first column parseable as datetime. At least one numeric column.
   "patchiness": { ... },
   "descriptive_stats": { ... },
   "statistical_tests": { ... },
-  "forecast_results": { ... },
   "evaluation_results": {
     "naive": {"mae": 2.1, "mse": 6.5, "mape": 0.04},
     "theta": {"mae": 1.8, "mse": 5.2, "mape": 0.03}
@@ -97,6 +96,9 @@ Required: first column parseable as datetime. At least one numeric column.
   "pipeline_log": ["[VALIDATE] Starting...", "..."]
 }
 ```
+
+`PipelineResult.forecast_results` is available in memory. The current
+`to_dict()` and `save()` methods serialize the summary and evaluation metrics.
 
 ## Extension Points
 
@@ -125,8 +127,9 @@ METRIC_REGISTRY["my_metric"] = MyCustomMetric
 
 Add to `visualization/plots.py` and re-export in `visualization/__init__.py`.
 
-## Configuration Override Precedence
+## Configuration sources
 
-1. **CLI argument** (highest priority)
-2. **YAML config file** (via `--config`)
-3. **MultiTimeConfig defaults** (lowest priority)
+The Python pipeline receives a `MultiTimeConfig` instance. Each CLI decides
+how it combines config and argument values. Consult the
+[configuration guide](../configuration.md) and the
+[script reference](../guides/scripts_reference.md).
