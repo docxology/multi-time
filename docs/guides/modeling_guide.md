@@ -46,7 +46,7 @@ sarimax = create_forecaster("sarimax")
 preds = run_forecast(sarimax, train, fh=30)
 
 # AutoARIMA (automatic p, d, q selection)
-# Requires: uv pip install -e ".[forecasting]"
+# Requires: uv sync --locked --extra forecasting
 auto = create_forecaster("auto_arima", sp=7)  # Weekly seasonality
 preds = run_forecast(auto, train, fh=30)
 ```
@@ -72,19 +72,9 @@ preds = run_forecast(ml_forecaster, train, fh=30)
 
 ## Step 5: Compare Models
 
-### Model Configuration Schemas
-
-When building dynamic pipelines, you can specify configurations via `MultiTimeConfig`.
-
-```json
-{
-  "models": ["naive", "theta", "exp_smoothing"],
-  "model_kwargs": {
-    "exp_smoothing": {"trend": "add", "seasonal": "add", "sp": 12},
-    "auto_arima": {"sp": 12, "suppress_warnings": true}
-  }
-}
-```
+Choose the model names in Python. Pass model-specific settings directly
+to `create_forecaster`, for example
+`create_forecaster("exp_smoothing", trend="add", seasonal="add", sp=12)`.
 
 ```python
 models = ["naive", "theta", "exp_smoothing", "poly_trend"]

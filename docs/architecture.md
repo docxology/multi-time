@@ -37,14 +37,6 @@ graph TD
 | `visualization/` | `plots.py` (facade), `core.py`, `series.py`, `forecast.py`, `diagnostics.py`, `statistics.py`, `comparison.py` | 19 plot functions across 6 categories | `matplotlib`, `scipy` |
 | `pipeline/` | `__init__.py` | End-to-end configurable pipeline (6 stages) | all above |
 
-## File Counts
-
-| Category | Count |
-| --- | --- |
-| Python source files | 42 |
-| Test files | 180 tests across 9 test modules |
-| CLI scripts | 9 (8 task-specific + 1 master `run_all.py`) |
-
 ## Data Flow
 
 ```text

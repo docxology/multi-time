@@ -1,7 +1,11 @@
-# 🎯 multi-time Documentation Hub
+# Multi-Time documentation
 
-> [!NOTE]
-> Comprehensive documentation for the `multi-time` package — a modular, configurable time series analysis toolkit built on sktime. Begin by reading [Notation and Glossary](technical/notation.md) to understand the unified structural definitions.
+- [Quickstart](quickstart.md) for installation, a forecast example, and checks.
+- [Configuration](configuration.md) for the Python and YAML interfaces.
+- [Software manuscript](manuscript/README.md) and [rendering](rendering.md)
+  for the reproducible synthetic example and its evidence.
+- [Implementation notes](implementation/README.md) for package internals.
+- [Testing](testing.md) and [maintenance backlog](backlog.md) for contributors.
 
 ## Contents
 

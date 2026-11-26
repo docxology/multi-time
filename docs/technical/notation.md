@@ -20,10 +20,10 @@
 ## Core Ecosystem Glossary
 
 - **Endogenous (`y`)**: The internal target variable whose future values we seek to predict based purely on its own past (and optionally external data).
-- **Exogenous (`X`)**: External driver variables representing independent features (e.g., holidays, marketing spend) that causally influence $y$.
+- **Exogenous (`X`)**: External driver variables representing independent features (e.g., holidays, marketing spend) that can be used to predict $y$.
 - **Stationarity**: A fundamental property requiring the mean, variance, and autocorrelation structure of $y$ to remain constant over time, enabling reliable classical forecasting (e.g., via ARIMA).
 - **Heteroscedasticity**: The condition where the variance of the error terms $R(t)$ changes or clusters over time (volatile periods vs calm periods), often requiring GARCH modeling or `BoxCox` transforms.
-- **Data Leakage**: The catastrophic error of allowing future information (from the test set) to influence the training or transformation of the training set. Strictly prevented via `ExpandingWindowSplitter`.
+- **Data Leakage**: The catastrophic error of allowing future information (from the test set) to influence the training or transformation of the training set. Chronological splitting helps control it. Fit preprocessing within each training window.
 - **Reduction (`make_reduction`)**: The architectural pattern of transforming a tabular Machine Learning model (e.g., Random Forest) into a stateful time series forecaster using a sliding historical window.
 
 ## Architectural `sktime` Terminology

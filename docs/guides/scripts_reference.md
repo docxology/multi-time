@@ -1,4 +1,4 @@
-# Guide: CLI# 🎯 Scripts Reference
+# Command-line reference
 
 > [!NOTE]
 > Reference for the 9 thin CLI orchestrator scripts (8 task-specific + `run_all.py`) within `multi-time`. For underlying terminology, refer strictly to [Notation and Glossary](../technical/notation.md).
@@ -47,7 +47,7 @@ uv run python scripts/run_synthetic.py --type random_walk --n 200
 | `--n` | `365` | Number of observations |
 | `--start` | `2023-01-01` | Start date |
 | `--seed` | `42` | Random seed |
-| `--output` | stdout | CSV output path |
+| `--output` | `output/synthetic_<type>.csv` | Explicit CSV path. `--output-dir` controls the default directory. |
 | `--trend` | `0.1` | Trend slope |
 | `--seasonal-period` | auto | Seasonal period |
 | `--seasonal-amplitude` | `0.0` | Seasonal amplitude |
@@ -88,7 +88,7 @@ uv run python scripts/run_analysis.py -i data.csv --nlags 30 --rolling-window 12
 
 ```bash
 uv run python scripts/run_forecast.py -i data.csv -m theta -H 30 --test-size 30
-uv run python scripts/run_forecast.py -i data.csv -m auto_arima -H 24 -o forecast.json
+uv run python scripts/run_forecast.py -i data.csv -m auto_arima -H 24 --output forecast.json
 ```
 
 Auto-imputes NaN and infers `DatetimeIndex.freq` before fitting.
@@ -147,8 +147,18 @@ uv run python scripts/run_multi_series.py --n-series 4 --harmonize-freq D --mode
 
 | Flag | Default | Description |
 | --- | --- | --- |
-| `--n-series` | `4` | Number of series to generate |
+| `--n-series` | Preset series | Number of custom series to generate |
 | `--harmonize-freq` | `D` | Frequency to harmonize to (D, W, MS, etc.) |
 | `--models` | `naive theta` | Space-separated model names |
 | `--horizon` | `14` | Forecast horizon |
 | `--test-fraction` | `0.15` | Test set fraction |
+
+## Reports and plots
+
+`run_pipeline.py` writes `pipeline_result.json` and `pipeline_summary.json`.
+`run_analysis.py` writes `analysis_report.json`, and `run_multi_series.py`
+writes input CSVs and `multi_series_report.json`. With an output directory,
+`run_forecast.py` writes `forecast_results.json` unless `--output` overrides
+the JSON path. Plot generation depends on the script, the data, and whether
+plotting is enabled. The [manuscript walkthrough](../rendering.md) documents
+the outputs from one complete demo.

@@ -1,0 +1,7 @@
+{
+  "fig:holdout": {
+    "filename": "holdout.png",
+    "generated_by": "scripts/run_end_to_end.py",
+    "alt_text": "Daily synthetic training history followed by a flat last-value forecast and the held-out actual values."
+  }
+}

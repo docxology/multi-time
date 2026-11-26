@@ -96,7 +96,7 @@ When querying bound estimations, implementations return standardized pandas stru
 
 ## Cross-Validation
 
-`sktime.split.ExpandingWindowSplitter` — expanding window CV for temporal data (no data leakage).
+`sktime.split.ExpandingWindowSplitter` — expanding-window temporal splits. Fit preprocessing inside the training windows.
 
 ## Related Projects
 
@@ -104,7 +104,7 @@ When querying bound estimations, implementations return standardized pandas stru
 | --- | --- |
 | [skpro](https://github.com/sktime/skpro) | Probabilistic prediction (optional) |
 | [skbase](https://github.com/sktime/skbase) | Base classes (bundled with sktime) |
-| [pytorch-forecasting](https://github.com/sktime/pytorch-forecasting) | Deep learning models (optional) |
+| [pytorch-forecasting](https://github.com/sktime/pytorch-forecasting) | Optional dependency only. The local registry has no deep learning adapter. |
 
 ## Version Compatibility
 
